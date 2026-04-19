@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const { Telegraf } = require("telegraf");
 
@@ -67,7 +68,7 @@ bot.on("successful_payment", (ctx) => {
 });
 
 // -------------------------
-// Webhook сервер
+// Webhook сервер для Render
 // -------------------------
 app.use(express.json());
 app.use(bot.webhookCallback("/webhook"));
@@ -76,8 +77,5 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, async () => {
   console.log("Bot server running on port", PORT);
-
-  // Устанавливаем webhook
   await bot.telegram.setWebhook(`${process.env.WEBHOOK_URL}/webhook`);
 });
-
