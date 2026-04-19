@@ -48,10 +48,10 @@ bot.action("buy_100", (ctx) => {
     title: "100 монет",
     description: "Покупка 100 монет в игре",
     payload: "buy_100_coins",
-    provider_token: "",
+    provider_token: "STARS",   // ← ВАЖНО: Stars включены
     currency: "XTR",
     prices: [
-      { label: "100 монет", amount: 10 }
+      { label: "100 монет", amount: 10 } // 10 Stars
     ]
   });
 });
@@ -79,3 +79,4 @@ app.listen(PORT, async () => {
   console.log("Bot server running on port", PORT);
   await bot.telegram.setWebhook(`${process.env.WEBHOOK_URL}/webhook`);
 });
+
